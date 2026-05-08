@@ -1,23 +1,3 @@
----
-title: Inspect Genesys Agent Copilot interactions with a Vue 3 + TypeScript web app
-author: devevang
-indextype: blueprint
-icon: blueprint
-image: images/flowchart.png
-category: 6
-summary: |
-  This Genesys Cloud Developer Blueprint provides a working single-page web
-  application — the Copilot Conversation Inspector — that replays what
-  Genesys Agent Copilot did on a given conversation. The app is a Vue 3 +
-  Vite + TypeScript SPA that authenticates with OAuth 2.0 Code Authorization
-  (PKCE), lists recent conversations from the Analytics API, and renders the
-  AI-generated summary plus every Copilot suggestion (knowledge articles,
-  scripts, canned responses, generated answers) along with how the agent
-  handled each one. The blueprint walks you through cloning the repository,
-  creating an OAuth client, configuring the app, running it locally, and
-  deploying it as a static site.
----
-
 This Genesys Cloud Developer Blueprint provides a working single-page web application, the **Copilot Conversation Inspector**, that replays what Genesys Agent Copilot did on a given conversation. Clone the repository, create one OAuth client in Genesys Cloud, run two `npm` commands, and you have a browser-based UI for reading back AI summaries, suggested wrap-up codes, and every Copilot suggestion across recent conversations.
 
 > [!NOTE]

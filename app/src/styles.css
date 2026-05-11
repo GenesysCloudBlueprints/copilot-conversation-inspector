@@ -1,0 +1,137 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg: #0b1020;
+  --color-panel: #131a2e;
+  --color-panel-2: #1a2240;
+  --color-border: #283155;
+  --color-ink: #e6ebff;
+  --color-muted: #9aa3c7;
+  --color-brand: #ff4f1f;
+  --color-brand-2: #ff7a4d;
+  --color-success: #2ecc71;
+  --color-info: #82b8ff;
+  --color-warn: #ffcc66;
+  --color-danger: #ff6b6b;
+  --color-quiet: #6c7596;
+
+  --radius-card: 14px;
+}
+
+@layer base {
+  html,
+  body,
+  #app {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+  }
+
+  body {
+    font-family:
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto, Helvetica,
+      Arial, sans-serif;
+    background:
+      radial-gradient(1200px 800px at 10% -10%, #1a2147 0%, var(--color-bg) 60%)
+        fixed;
+    color: var(--color-ink);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a {
+    color: var(--color-brand-2);
+  }
+
+  code {
+    background: rgb(255 255 255 / 0.06);
+    padding: 1px 5px;
+    border-radius: 4px;
+    font-size: 0.9em;
+  }
+}
+
+@layer components {
+  .card {
+    @apply rounded-[var(--radius-card)] border border-border bg-panel p-[18px] mb-4;
+  }
+
+  .field {
+    @apply flex flex-col;
+  }
+
+  .field > label {
+    @apply mb-1.5 text-xs text-muted;
+  }
+
+  .input,
+  .select {
+    @apply w-full rounded-lg border border-border bg-panel-2 px-3 py-2.5 text-ink
+           focus:outline focus:outline-2 focus:outline-offset-1 focus:outline-brand;
+    font: inherit;
+  }
+
+  .btn {
+    @apply cursor-pointer rounded-lg border border-brand bg-brand px-[18px] py-2.5
+           font-semibold text-white transition-colors
+           hover:not-disabled:bg-brand-2 hover:not-disabled:border-brand-2
+           disabled:opacity-50 disabled:cursor-not-allowed;
+    font: inherit;
+  }
+
+  .btn-ghost {
+    @apply cursor-pointer rounded-lg border border-border bg-transparent px-[14px] py-1.5
+           text-[13px] text-ink transition-colors
+           hover:not-disabled:bg-panel-2
+           disabled:opacity-50 disabled:cursor-not-allowed;
+    font: inherit;
+  }
+
+  .pill {
+    @apply inline-flex items-center gap-2 rounded-full border border-border bg-panel
+           px-3 py-1.5 text-[13px] text-muted;
+  }
+
+  .pill-dot {
+    @apply h-2 w-2 rounded-full bg-quiet;
+  }
+
+  .pill[data-connected="true"] .pill-dot {
+    background: var(--color-success);
+  }
+
+  .chip {
+    @apply rounded-full border border-border bg-panel-2 px-2.5 py-1 text-xs text-muted;
+  }
+
+  .alert-error {
+    @apply rounded-lg border border-danger/30 bg-danger/10 px-3.5 py-2.5 text-[13px]
+           text-[color:#ff8e8e];
+  }
+
+  .dt-label {
+    @apply pt-0.5 text-xs uppercase tracking-[0.5px] text-muted;
+  }
+
+  .dd-text {
+    @apply m-0 leading-[1.5];
+  }
+
+  /* Shared state-variant tokens for chips & suggestion items.
+     A single source of truth for the Suggested/Accepted/Dismissed/Failed/Rated
+     palette, consumed via [data-state="…"] selectors. */
+  [data-state="Suggested"] {
+    --state-color: var(--color-info);
+  }
+  [data-state="Accepted"] {
+    --state-color: var(--color-success);
+  }
+  [data-state="Dismissed"] {
+    --state-color: var(--color-quiet);
+  }
+  [data-state="Failed"] {
+    --state-color: var(--color-danger);
+  }
+  [data-state="Rated"] {
+    --state-color: var(--color-warn);
+  }
+}
